@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-@layer base {
-  body {
-    background: linear-gradient(135deg, #2c1a14 0%, #150b08 100%);
-    color: #f3ece7;
-    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  }
+/* Tulis langsung styling dasar untuk body */
+body {
+  background: linear-gradient(135deg, #2c1a14 0%, #150b08 100%);
+  color: #f3ece7;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
+/* Custom Utility Class */
 .bg-glow {
   position: absolute;
   width: 600px;
