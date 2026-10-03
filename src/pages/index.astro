@@ -1,51 +1,69 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!-- <<<<<<< HEAD
---- // Import stylesheet Tailwind atau komponen di frontmatter Astro jika ada
---- -->
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <title>Landing Page Astro</title>
-  </head>
-  <body class="bg-slate-900 text-white min-h-screen">
-    <!-- Contoh Class Tailwind -->
-    <h1 id="hero-title" class="text-5xl font-bold text-center mt-20 opacity-0">
-      Selamat Datang!
-    </h1>
-
-    <!-- Script Client-Side untuk Lenis & GSAP -->
-    <script>
-      import Lenis from "lenis";
-      import gsap from "gsap";
-
-      // 1. Inisialisasi Lenis Smooth Scroll
-      const lenis = new Lenis();
-      function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-
-      // 2. Inisialisasi Animasi GSAP
-      gsap.to("#hero-title", {
-        opacity: 1,
-        y: -20,
-        duration: 1.5,
-        ease: "power3.out",
-      });
-    </script>
-  </body>
-</html>
-=======
 <Layout>
-  <Welcome />
+  <!-- HEADER & NAVBAR -->
+  <header class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl font-bold tracking-wider text-[#c19a6b]">Coffee</span>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#daccb8]">
+      <a href="#" class="text-[#c19a6b]">Home</a>
+      <a href="#" class="hover:text-white transition">Product</a>
+      <a href="#" class="hover:text-white transition">Delivery</a>
+      <a href="#" class="hover:text-white transition">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <button class="text-sm bg-[#c19a6b] hover:bg-[#a67c53] text-[#150b08] font-bold px-5 py-2 rounded-full transition">
+        Sign In
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="max-w-7xl mx-auto px-6 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center relative z-10">
+    
+    <!-- Bagian Kiri: Judul dan Tombol Aksi -->
+    <div class="space-y-6">
+      <span class="text-sm font-semibold tracking-widest text-[#c19a6b] uppercase">Premium Taste</span>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tight text-white">
+        Luxing <br />
+        <span class="text-[#c19a6b]">Connecting</span>
+      </h1>
+      <p class="text-base text-[#baa193] max-w-md leading-relaxed">
+        Nikmati perpaduan sempurna dari biji kopi pilihan terbaik dunia dengan kehangatan susu segar melayang yang menjaga keaslian rasa di setiap cangkir Anda.
+      </p>
+      
+      <div class="pt-4 flex flex-wrap gap-4">
+        <a href="#" class="bg-transparent border-2 border-[#c19a6b] text-[#c19a6b] hover:bg-[#c19a6b] hover:text-[#150b08] font-bold px-8 py-3 rounded-full transition shadow-lg">
+          Order Online
+        </a>
+        <a href="#" class="flex items-center gap-2 text-white hover:text-[#c19a6b] font-medium transition px-4 py-3">
+          See Menu <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bagian Kanan: Visual Kopi Melayang Estetik -->
+    <div class="relative flex justify-center items-center">
+      <div class="absolute w-72 h-72 md:w-96 md:h-96 border border-[#c19a6b]/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+      <div class="absolute w-60 h-60 md:w-80 md:h-80 border-2 border-dashed border-[#c19a6b]/10 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
+
+      <div class="relative w-80 h-80 md:w-[450px] md:h-[450px] flex justify-center items-center">
+        <img 
+          src="https://unsplash.com" 
+          alt="Premium Latte Visual" 
+          class="object-cover w-64 h-64 md:w-80 md:h-80 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10"
+        />
+        
+        <div class="absolute bottom-10 left-4 bg-[#1e110d]/90 backdrop-blur-md border border-[#c19a6b]/30 p-4 rounded-xl shadow-xl max-w-[150px]">
+          <p class="text-xs text-[#c19a6b] font-bold">Best Seller</p>
+          <h4 class="text-sm font-bold text-white">Caramel Macchiato</h4>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
-<h1>Halo, ini tes Git pertama gue!</h1>
-<p>Lagi nyobain commit lewat Terminal VS Code.</p>

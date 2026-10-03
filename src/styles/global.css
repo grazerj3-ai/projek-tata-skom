@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, #2c1a14 0%, #150b08 100%);
+    color: #f3ece7;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
+
+.bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(193, 154, 107, 0.15) 0%,
+    transparent 70%
+  );
+  top: -10%;
+  left: 20%;
+  z-index: 0;
+  pointer-events: none;
+}
