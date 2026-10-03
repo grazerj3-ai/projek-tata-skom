@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # Ganti 'master' jika branch utamamu bernama master
+    branches: [main] # Ubah ke 'master' jika nama branch utamamu master
   workflow_dispatch:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-concurrently:
+concurrency:
   group: "pages"
   cancel-in-progress: true
 
