@@ -1,102 +1,148 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-  <!-- HEADER & NAVBAR -->
+<BaseLayout title="Kopi Senja - Freshly Brewed Everyday">
+  <!-- Navbar -->
   <header
-    class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10"
+    class="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 py-4 flex justify-between items-center"
   >
-    <div class="flex items-center gap-2">
-      <span class="text-2xl font-bold tracking-wider text-[#c19a6b]"
-        >Coffee</span
-      >
-    </div>
-
-    <nav
-      class="hidden md:flex items-center gap-8 text-sm font-medium text-[#daccb8]"
+    <a href="#" class="font-serif text-2xl font-bold tracking-wider text-white"
+      >KOPI.SENJA</a
     >
-      <a href="#" class="text-[#c19a6b]">Home</a>
-      <a href="#" class="hover:text-white transition">Product</a>
-      <a href="#" class="hover:text-white transition">Delivery</a>
-      <a href="#" class="hover:text-white transition">Contact</a>
-    </nav>
-
-    <div class="flex items-center gap-4">
-      <button
-        class="text-sm bg-[#c19a6b] hover:bg-[#a67c53] text-[#150b08] font-bold px-5 py-2 rounded-full transition"
+    <nav
+      class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase"
+    >
+      <a href="#about" class="hover:text-[#C89D66] transition-colors">Tentang</a
       >
-        Sign In
-      </button>
-    </div>
+      <a href="#menu" class="hover:text-[#C89D66] transition-colors"
+        >Menu Utama</a
+      >
+      <a href="#location" class="hover:text-[#C89D66] transition-colors"
+        >Lokasi</a
+      >
+    </nav>
   </header>
 
-  <!-- HERO SECTION -->
-  <main
-    class="max-w-7xl mx-auto px-6 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center relative z-10"
+  <!-- Hero Section -->
+  <section
+    class="relative h-screen flex items-center justify-center overflow-hidden px-4"
   >
-    <!-- Bagian Kiri: Judul dan Tombol Aksi -->
-    <div class="space-y-6">
-      <span
-        class="text-sm font-semibold tracking-widest text-[#c19a6b] uppercase"
-        >Premium Taste</span
-      >
+    <div class="text-center z-10 max-w-3xl">
       <h1
-        class="text-5xl md:text-7xl font-bold leading-tight tracking-tight text-white"
+        class="hero-title font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight opacity-0 translate-y-8"
       >
-        Luxing <br />
-        <span class="text-[#c19a6b]">Connecting</span>
+        Nikmati Rasa <span class="text-[#C89D66] italic">Kopi Otentik</span> Di Setiap
+        Tegukan
       </h1>
-      <p class="text-base text-[#baa193] max-w-md leading-relaxed">
-        Nikmati perpaduan sempurna dari biji kopi pilihan terbaik dunia dengan
-        kehangatan susu segar melayang yang menjaga keaslian rasa di setiap
-        cangkir Anda.
+      <p
+        class="hero-subtitle text-base md:text-xl text-neutral-400 mb-8 opacity-0 translate-y-8"
+      >
+        Dipetik dari biji kopi pilihan nusantara, diseduh langsung oleh barista
+        berpengalaman untuk menemani harimu.
       </p>
-
-      <div class="pt-4 flex flex-wrap gap-4">
+      <div class="hero-cta opacity-0 translate-y-8">
         <a
-          href="#"
-          class="bg-transparent border-2 border-[#c19a6b] text-[#c19a6b] hover:bg-[#c19a6b] hover:text-[#150b08] font-bold px-8 py-3 rounded-full transition shadow-lg"
+          href="#menu"
+          class="inline-block bg-[#C89D66] text-black font-semibold px-8 py-4 rounded-full hover:bg-[#b08752] transition-colors"
         >
-          Order Online
-        </a>
-        <a
-          href="#"
-          class="flex items-center gap-2 text-white hover:text-[#c19a6b] font-medium transition px-4 py-3"
-        >
-          See Menu <span>→</span>
+          Lihat Menu
         </a>
       </div>
     </div>
+  </section>
 
-    <!-- Bagian Kanan: Visual Kopi Melayang Estetik -->
-    <div class="relative flex justify-center items-center">
-      <div
-        class="absolute w-72 h-72 md:w-96 md:h-96 border border-[#c19a6b]/20 rounded-full animate-[spin_20s_linear_infinite]"
-      >
+  <!-- About / Highlight Section (Scroll Animation Target) -->
+  <section
+    id="about"
+    class="py-24 px-6 max-w-6xl mx-auto border-t border-neutral-800"
+  >
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal-item opacity-0 translate-y-12">
+        <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">
+          Kualitas Biji Terbaik Langsung Dari Petani Lokal
+        </h2>
+        <p class="text-neutral-400 leading-relaxed mb-4">
+          Kami percaya bahwa rasa kopi yang nikmat berawal dari hubungan yang
+          adil dengan para petani lokal. Setiap biji kopi disangrai secara
+          cermat (*artisan roast*) untuk mengeluarkan cita rasa alami khas tanah
+          Indonesia.
+        </p>
       </div>
-      <div
-        class="absolute w-60 h-60 md:w-80 md:h-80 border-2 border-dashed border-[#c19a6b]/10 rounded-full animate-[spin_35s_linear_infinite_reverse]"
-      >
-      </div>
-
-      <div
-        class="relative w-80 h-80 md:w-[450px] md:h-[450px] flex justify-center items-center"
-      >
-        <!-- GAMBAR TELAH DIPERBAIKI SINI -->
-        <img
-          src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80"
-          alt="Premium Latte Visual"
-          class="object-cover w-64 h-64 md:w-80 md:h-80 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10"
-        />
-
+      <div class="reveal-item opacity-0 translate-y-12">
         <div
-          class="absolute bottom-10 left-4 bg-[#1e110d]/90 backdrop-blur-md border border-[#c19a6b]/30 p-4 rounded-xl shadow-xl max-w-[150px]"
+          class="relative w-full h-[400px] bg-neutral-900 rounded-2xl overflow-hidden flex items-center justify-center border border-neutral-800"
         >
-          <p class="text-xs text-[#c19a6b] font-bold">Best Seller</p>
-          <h4 class="text-sm font-bold text-white">Caramel Macchiato</h4>
+          <span class="text-neutral-600">[ Area Foto Kopi / Biji Kopi ]</span>
         </div>
       </div>
     </div>
-  </main>
-</Layout>
+  </section>
+
+  <!-- Menu Highlights -->
+  <section id="menu" class="py-24 px-6 max-w-6xl mx-auto">
+    <h2
+      class="reveal-item font-serif text-3xl md:text-4xl font-bold text-center mb-16 opacity-0 translate-y-12"
+    >
+      Menu Favorit Minggu Ini
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        ["Espresso Intenso", "Velvet Latte", "Cold Brew Reserve"].map(
+          (menu, i) => (
+            <div class="reveal-item bg-neutral-900/50 p-6 rounded-2xl border border-neutral-800 hover:border-[#C89D66]/50 transition-colors opacity-0 translate-y-12">
+              <div class="w-full h-48 bg-neutral-800 rounded-xl mb-4 flex items-center justify-center">
+                <span class="text-neutral-600 text-sm">[ Foto {menu} ]</span>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-2">{menu}</h3>
+              <p class="text-sm text-neutral-400 mb-4">
+                Perpaduan cita rasa manis alami dan *body* yang seimbang.
+              </p>
+              <span class="text-[#C89D66] font-semibold">Rp 28.000</span>
+            </div>
+          ),
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Registrasi Plugin GSAP ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Animasi Load Awal untuk Hero Section
+    const tl = gsap.timeline();
+    tl.to(".hero-title", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+      .to(
+        ".hero-subtitle",
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.6",
+      )
+      .to(
+        ".hero-cta",
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.6",
+      );
+
+    // 2. Animasi Scroll Reveal untuk elemen-elemen saat digulir
+    const revealItems = document.querySelectorAll(".reveal-item");
+    revealItems.forEach((item) => {
+      gsap.to(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%", // Mulai animasi saat elemen mencapai 85% layar dari atas
+          toggleActions: "play none none reverse",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    });
+  });
+</script>
