@@ -1,53 +1,74 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import heroImage from "../assets/biji_kopi.webp";
-import produk from "../assets/produk.webp";
+
+// Import Aset Gambar
+import heroImage from "../assets/images/coffe_fall.png";
+import bgPanjang from "../assets/images/bg_panjang.png"; // Gambar background panjang sesudah hero
+import espressoImg from "../assets/images/espresso.webp";
+import latteImg from "../assets/images/latteImg.webp";
+import coldBrewImg from "../assets/images/coldBrewImg.webp";
+
+const menuList = [
+  {
+    name: "Espresso Intenso",
+    desc: "Perpaduan cita rasa manis alami dan body yang seimbang.",
+    price: "Rp 28.000",
+    image: espressoImg,
+  },
+  {
+    name: "Velvet Latte",
+    desc: "Tekstur lembut susu yang berpadu sempurna dengan espresso.",
+    price: "Rp 32.000",
+    image: latteImg,
+  },
+  {
+    name: "Cold Brew Reserve",
+    desc: "Diseduh dingin selama 16 jam untuk rasa yang halus dan tidak asam.",
+    price: "Rp 35.000",
+    image: coldBrewImg,
+  },
+];
 ---
 
 <BaseLayout title="Kopi Senja - Freshly Brewed Everyday">
   <!-- Navbar -->
   <header
-    class="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 py-4 flex justify-between items-center"
+    class="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 md:px-12 py-5 flex justify-between items-center"
   >
-    <a href="#" class="font-serif text-2xl font-bold tracking-wider text-white"
-      >KOPI.SENJA</a
-    >
-    <nav
-      class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase"
-    >
-      <a href="#about" class="hover:text-[#C89D66] transition-colors">Tentang</a
-      >
-      <a href="#menu" class="hover:text-[#C89D66] transition-colors"
-        >Menu Utama</a
-      >
-      <a href="#location" class="hover:text-[#C89D66] transition-colors"
-        >Lokasi</a
-      >
+    <a href="#" class="font-serif text-2xl font-bold tracking-wider text-white">
+      KOPI.SENJA
+    </a>
+    <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase">
+      <a href="#about" class="hover:text-[#C89D66] transition-colors">Tentang</a>
+      <a href="#menu" class="hover:text-[#C89D66] transition-colors">Menu Utama</a>
+      <a href="#location" class="hover:text-[#C89D66] transition-colors">Lokasi</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section
-    class="relative h-screen flex items-center justify-center overflow-hidden px-4"
-  >
-    <div class="text-center z-10 max-w-3xl">
-      <h1
-        class="hero-title font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight opacity-0 translate-y-8"
-      >
-        Nikmati Rasa <span class="text-[#C89D66] italic">Kopi Otentik</span> Di Setiap
-        Tegukan
+  <!-- Hero Section (Tetap Menggunakan Latar Biji Kopi Interaktif) -->
+  <section class="hero-container relative h-screen flex items-center justify-center overflow-hidden px-4">
+    <div class="hero-bg-wrapper absolute inset-0 w-full h-full pointer-events-none z-0">
+      <Image
+        src={heroImage}
+        alt="Latar belakang biji kopi"
+        class="hero-bg-img w-full h-full object-cover scale-100 filter brightness-50 contrast-125"
+        loading="eager"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#12100E] z-10 pointer-events-none"></div>
+
+    <div class="hero-content text-center z-20 max-w-3xl">
+      <h1 class="hero-title font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight opacity-0 translate-y-8">
+        Nikmati Rasa <span class="text-[#C89D66] italic">Kopi Otentik</span> Di Setiap Tegukan
       </h1>
-      <p
-        class="hero-subtitle text-base md:text-xl text-neutral-400 mb-8 opacity-0 translate-y-8"
-      >
-        Dipetik dari biji kopi pilihan nusantara, diseduh langsung oleh barista
-        berpengalaman untuk menemani harimu.
+      <p class="hero-subtitle text-base md:text-xl text-neutral-300 mb-8 opacity-0 translate-y-8 max-w-2xl mx-auto">
+        Dipetik dari biji kopi pilihan nusantara, diseduh langsung oleh barista berpengalaman untuk menemani harimu.
       </p>
       <div class="hero-cta opacity-0 translate-y-8">
         <a
           href="#menu"
-          class="inline-block bg-[#C89D66] text-black font-semibold px-8 py-4 rounded-full hover:bg-[#b08752] transition-colors"
+          class="inline-block bg-[#C89D66] text-black font-semibold px-8 py-4 rounded-full hover:bg-[#b08752] transition-all hover:scale-105 shadow-lg shadow-[#C89D66]/20"
         >
           Lihat Menu
         </a>
@@ -55,106 +76,175 @@ import produk from "../assets/produk.webp";
     </div>
   </section>
 
-  <!-- About / Highlight Section (Scroll Animation Target) -->
-  <section
-    id="about"
-    class="py-24 px-6 max-w-6xl mx-auto border-t border-neutral-800"
-  >
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="reveal-item opacity-0 translate-y-12">
-        <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">
-          Kualitas Biji Terbaik Langsung Dari Petani Lokal
-        </h2>
-        <p class="text-neutral-400 leading-relaxed mb-4">
-          Kami percaya bahwa rasa kopi yang nikmat berawal dari hubungan yang
-          adil dengan para petani lokal. Setiap biji kopi disangrai secara
-          cermat (*artisan roast*) untuk mengeluarkan cita rasa alami khas tanah
-          Indonesia.
-        </p>
-      </div>
-      <div class="reveal-item opacity-0 translate-y-12">
-        <div
-          class="relative w-full h-[400px] bg-neutral-900 rounded-2xl overflow-hidden flex items-center justify-center border border-neutral-800"
-        >
-          <span class="text-neutral-600">
+  <!-- ============================================================== -->
+  <!-- WRAPPER UNTUK WRAPPING SECTION SESUDAH HERO (LONG BACKGROUND) -->
+  <!-- ============================================================== -->
+  <div class="long-bg-wrapper relative w-full overflow-hidden">
+    <!-- Gambar Background Panjang Interaktif -->
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+      <Image
+        src={bgPanjang}
+        alt="Background Panjang Kedai Kopi"
+        class="long-bg-img w-full h-full object-cover filter brightness-[0.35] contrast-110"
+      />
+      <!-- Gradient Overlay Hitam Transparan agar Konten Teks Tetap Jelat & Terbaca -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#12100E] via-black/60 to-[#12100E]"></div>
+    </div>
+
+    <!-- 1. About Section -->
+    <section id="about" class="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal-item opacity-0 translate-y-12">
+          <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            Kualitas Biji Terbaik Langsung Dari Petani Lokal
+          </h2>
+          <p class="text-neutral-300 leading-relaxed mb-4">
+            Kami percaya bahwa rasa kopi yang nikmat berawal dari hubungan yang adil dengan para petani lokal. Setiap biji kopi disangrai secara cermat (<em>artisan roast</em>) untuk mengeluarkan cita rasa alami khas tanah Indonesia.
+          </p>
+          <p class="text-neutral-300 leading-relaxed">
+            Suasana hangat dan tenang dirancang khusus untuk menjadi ruang singgah terbaik Anda di kala senja.
+          </p>
+        </div>
+        <div class="reveal-item opacity-0 translate-y-12">
+          <div class="relative w-full h-[400px] bg-neutral-900/60 rounded-2xl overflow-hidden border border-neutral-700/50 backdrop-blur-sm">
             <Image
-              src={heroImage} 
-              alt="Biji kopi pilihan yang disangrai" 
-              class="w-full h-auto object-cover rounded-2xl"
-              width={1200}
-              height={600}
+              src={heroImage}
+              alt="Biji kopi pilihan yang disangrai"
+              class="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-700"
             />
-          </span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Menu Highlights -->
-  <section id="menu" class="py-24 px-6 max-w-6xl mx-auto">
-    <h2
-      class="reveal-item font-serif text-3xl md:text-4xl font-bold text-center mb-16 opacity-0 translate-y-12"
-    >
-      Menu Favorit Minggu Ini
-    </h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        ["Espresso Intenso", "Velvet Latte", "Cold Brew Reserve"].map(
-          (menu, i) => (
-            <div class="reveal-item bg-neutral-900/50 p-6 rounded-2xl border border-neutral-800 hover:border-[#C89D66]/50 transition-colors opacity-0 translate-y-12">
-              <div class="w-full h-48 bg-neutral-800 rounded-xl mb-4 flex items-center justify-center">
-                <span class="text-neutral-600 text-sm">
+    <!-- 2. Menu Section -->
+    <section id="menu" class="relative py-24 px-6 md:px-12 max-w-6xl mx-auto border-t border-neutral-800/60 z-10">
+      <div class="text-center mb-16">
+        <h2 class="reveal-item font-serif text-3xl md:text-5xl font-bold mb-4 opacity-0 translate-y-12">
+          Menu Favorit Minggu Ini
+        </h2>
+        <p class="reveal-item text-neutral-300 max-w-md mx-auto opacity-0 translate-y-12">
+          Pilihan racikan espresso dan cold brew terbaik kami.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {menuList.map((item) => (
+          <div class="reveal-item bg-neutral-950/70 p-6 rounded-2xl border border-neutral-800/80 hover:border-[#C89D66]/60 transition-all duration-300 opacity-0 translate-y-12 flex flex-col justify-between backdrop-blur-md">
+            <div>
+              <div class="w-full h-52 rounded-xl mb-6 overflow-hidden bg-neutral-800">
                 <Image
-                  src={produk} 
-                  alt="produk1" 
-                  class="w-full h-auto object-cover rounded-2xl"
-                  width={1200}
-                  height={600}
+                  src={item.image}
+                  alt={item.name}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                </span>
               </div>
-              <h3 class="font-serif text-xl font-semibold mb-2">{menu}</h3>
-              <p class="text-sm text-neutral-400 mb-4">
-                Perpaduan cita rasa manis alami dan *body* yang seimbang.
-              </p>
-              <span class="text-[#C89D66] font-semibold">Rp 28.000</span>
+              <h3 class="font-serif text-2xl font-semibold mb-2 text-white">{item.name}</h3>
+              <p class="text-sm text-neutral-300 mb-6 leading-relaxed">{item.desc}</p>
             </div>
-          ),
-        )
-      }
-    </div>
-  </section>
+            <div class="flex justify-between items-center pt-4 border-t border-neutral-800">
+              <span class="text-[#C89D66] text-lg font-semibold">{item.price}</span>
+              <button class="text-xs uppercase tracking-wider text-neutral-200 hover:text-white bg-neutral-800/80 px-4 py-2 rounded-full hover:bg-[#C89D66] hover:text-black transition-all">
+                Pesan
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Location Section -->
+    <section id="location" class="relative py-24 px-6 md:px-12 max-w-6xl mx-auto border-t border-neutral-800/60 z-10">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal-item opacity-0 translate-y-12">
+          <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Singgah ke Kedai Kami</h2>
+          <p class="text-neutral-300 leading-relaxed mb-6">
+            Nikmati seduhan kopi hangat dengan suasana tenang. Kami siap menyambut Anda setiap hari.
+          </p>
+          <div class="space-y-4 text-neutral-200">
+            <div>
+              <h4 class="text-[#C89D66] font-semibold text-sm uppercase tracking-wider">Alamat</h4>
+              <p>Jl. Senjata Raya No. 42, Jakarta Selatan</p>
+            </div>
+            <div>
+              <h4 class="text-[#C89D66] font-semibold text-sm uppercase tracking-wider">Jam Operasional</h4>
+              <p>Senin - Minggu: 08.00 - 22.00 WIB</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-item opacity-0 translate-y-12">
+          <div class="w-full h-[350px] bg-neutral-950/70 rounded-2xl border border-neutral-800 flex items-center justify-center text-neutral-400 backdrop-blur-md">
+            <p class="text-sm">[ Peta Lokasi Kedai ]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-neutral-800 py-8 px-6 text-center text-neutral-500 text-sm relative z-20 bg-[#12100E]">
+    <p>&copy; {new Date().getFullYear()} KOPI.SENJA. All rights reserved.</p>
+  </footer>
 </BaseLayout>
 
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  // Registrasi Plugin GSAP ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // 1. Animasi Load Awal untuk Hero Section
+  const initAnimations = () => {
+    // 1. Animasi Load Hero Section
     const tl = gsap.timeline();
     tl.to(".hero-title", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-      .to(
-        ".hero-subtitle",
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.6",
-      )
-      .to(
-        ".hero-cta",
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.6",
-      );
+      .to(".hero-subtitle", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .to(".hero-cta", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
-    // 2. Animasi Scroll Reveal untuk elemen-elemen saat digulir
+    // 2. Parallax Background Hero
+    gsap.to(".hero-bg-img", {
+      scrollTrigger: {
+        trigger: ".hero-container",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      scale: 1.25,
+      yPercent: 20,
+      ease: "none",
+    });
+
+    gsap.to(".hero-content", {
+      scrollTrigger: {
+        trigger: ".hero-container",
+        start: "top top",
+        end: "60% top",
+        scrub: true,
+      },
+      opacity: 0,
+      y: -50,
+      ease: "none",
+    });
+
+    // 3. Parallax Interaktif untuk Gambar Background Panjang (Long Background Parallax)
+    gsap.to(".long-bg-img", {
+      scrollTrigger: {
+        trigger: ".long-bg-wrapper",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+      yPercent: 15, // Efek pergeseran gambar panjang saat di-scroll
+      scale: 1.05,
+      ease: "none",
+    });
+
+    // 4. Scroll Reveal untuk elemen-elemen konten
     const revealItems = document.querySelectorAll(".reveal-item");
     revealItems.forEach((item) => {
       gsap.to(item, {
         scrollTrigger: {
           trigger: item,
-          start: "top 85%", // Mulai animasi saat elemen mencapai 85% layar dari atas
+          start: "top 85%",
           toggleActions: "play none none reverse",
         },
         opacity: 1,
@@ -163,5 +253,8 @@ import produk from "../assets/produk.webp";
         ease: "power3.out",
       });
     });
-  });
+  };
+
+  document.addEventListener("DOMContentLoaded", initAnimations);
+  document.addEventListener("astro:page-load", initAnimations);
 </script>
